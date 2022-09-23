@@ -15,10 +15,20 @@ nav{
   flex-wrap: wrap;
 }
 .card{
+  display: flex;
+  flex-direction:column;
   margin-bottom: 2rem;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+justify-content: flex-end;
 }
 
 .btn-primary{
   background-color: #8367C7;
   border: none;
+}
+.card-img-top{
+  height: 300px!important;
 }
