@@ -2,12 +2,12 @@ const newsSection = document.querySelector('.news');
 
 
 // function to display news
-const displayNews = () => {
+const displayNews = (data) => {
   const card = `<div class="card" style="width: 18rem;">
-    <img src="images/logo.jpg" class="card-img-top" alt="...">
+    <img src="images/${data.news_picture}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <h5 class="card-title">${data.news_title}</h5>
+      <p class="card-text">${data.news_content}</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
@@ -15,5 +15,10 @@ const displayNews = () => {
 newsSection.innerHTML+= card;
 };
 
-
-displayNews();
+// function to fetch Get News API
+$.getJSON('http://localhost/news-website/backend/getnews.php',  // url
+      function (data, textStatus, jqXHR) {  // success callback
+        data.forEach((item, i) => {
+          displayNews(item);
+        });
+    });
